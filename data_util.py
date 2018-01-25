@@ -294,7 +294,7 @@ def load_glove_matrix(vec_file, word_index, config):
 
     print('Found %s word vectors.' % len(embeddings_index))
 
-    nb_words = min(config.MAX_NB_WORDS, len(word_index)) + 1
+    nb_words = min(TrainConfig.MAX_NB_WORDS, len(word_index)) + 1
     embedding_matrix = np.zeros((nb_words, config.WORD_EMBEDDING_DIM))
     for word, i in tqdm(word_index.items()):
         embedding_vector = embeddings_index.get(word)
@@ -322,7 +322,7 @@ def load_word2vec_matrix(vec_file, word_index, config):
         vec_file, binary=True)
     print('Found %s word vectors of word2vec' % len(word2vec.vocab))
 
-    nb_words = min(config.MAX_NB_WORDS, len(word_index)) + 1
+    nb_words = min(TrainConfig.MAX_NB_WORDS, len(word_index)) + 1
     embedding_matrix = np.zeros((nb_words, config.WORD_EMBEDDING_DIM))
     for word, i in word_index.items():
         if word in word2vec.vocab:
